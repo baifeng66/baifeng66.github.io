@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>c#基础笔记(一)</title>
+    <url>/2023/09/23/c-base-notes01/</url>
+    <content><![CDATA[<p><a href="https://www.runoob.com/csharp/csharp-tutorial.html">c#-菜鸟教程</a></p>
+<p><a href="https://juejin.cn/post/6844903934578917389">Mac终端常用命令总结</a></p>
+<h1 id="基础（一）"><a href="#基础（一）" class="headerlink" title="基础（一）"></a>基础（一）</h1><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span>vs中不能同时存在多个Main方法</span><br><span class="line"><span class="number">2.</span>命名空间(<span class="keyword">namespace</span>)的设计目的是提供一种让一组名称与其他名称分隔开的方式。</span><br></pre></td></tr></table></figure>
+<h2 id="注释符"><a href="#注释符" class="headerlink" title="注释符"></a>注释符</h2><p>1.解释代码</p>
+<p>2.注销代码，不能执行</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打印i **(第一种形式) 单行注释**</span></span><br><span class="line"><span class="comment">/*  **(第二种形式) 多**行注释*/</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> **文档注释 ****解释类或者方法**</span></span><br><span class="line">Console.WriteLine(i);</span><br><span class="line"><span class="comment">//Console.WriteLine(i);</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>语法：</p>
+<p>  const 变量类型 变量名 &#x3D; 值;</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>1.在数据中存储数据</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">**变量类型 变量名 = 变量值;**</span></span><br><span class="line"><span class="comment">= --&gt; **赋值**作用,**赋值运算符**</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">int</span> age = <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2.数据类型</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="built_in">int</span>  整数类型</span><br><span class="line"><span class="number">2.</span> <span class="built_in">double</span> 小数类型 <span class="built_in">float</span> 值后面+f</span><br><span class="line"><span class="number">3.</span> <span class="built_in">char</span> 字符指针类型 <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="number">4.</span> <span class="built_in">decimal</span> 金钱类型 值后面+m</span><br><span class="line"><span class="number">5.</span> <span class="built_in">string</span> 字符串类型 <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>3.使用</p>
+<ul>
+<li>先声明再赋值再使用</li>
+<li><strong>～</strong> 代码出现红色波浪线 —》 语法错误</li>
+<li><strong>～</strong> 代码出现绿色波浪线 —》 警告</li>
+</ul>
+<p>4.命名规则</p>
+<ul>
+<li>必须以 字母&#x2F;下划线&#x2F;@符号 开头，不能以 数字 开头</li>
+<li>后面跟任意 字母&#x2F;下划线&#x2F;数字</li>
+<li>不能与 关键字 重名，大小写 敏感，不允许在 同一作用域 重复定义</li>
+<li>规范<ul>
+<li>Camel  多用于变量和方法参数 —》首个单词的首字母 小写，其他单词的首字母 大写<ul>
+<li>highSchoolStudent</li>
+</ul>
+</li>
+<li>Pascal  多用于类和方法(成员名) —》每个单词的首字母都要 大写<ul>
+<li>HighSchoolStudent</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title="+"></a>+</h2><ol>
+<li>相加 —》数字之间+表示加法运算</li>
+<li>拼接 —》 数字和字符串之间+表示拼接</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">int</span> b = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">string</span> c = <span class="string">&quot;45&quot;</span>;</span><br><span class="line">Consile.WriteLine(a + b); <span class="comment">// 4</span></span><br><span class="line">Consile.WriteLine(a + c); <span class="comment">// 145</span></span><br><span class="line">Consile.WriteLine(b + c); <span class="comment">// 345</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h2><p>先挖坑，再填坑</p>
+<ul>
+<li>挖几个坑，就应该填几个，多填-没影响，少填-报错</li>
+<li>输出顺序：按照挖坑的顺序</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">1</span>, b = <span class="number">2</span>, c = <span class="number">3</span>;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;第一个数字:&#123;0&#125;,第二个数字:&#123;1&#125;,第三个数字:&#123;2&#125;&quot;</span>, a, b, c); <span class="comment">//1 2 3</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;第一个数字:&#123;1&#125;,第二个数字:&#123;0&#125;,第三个数字:&#123;2&#125;&quot;</span>, a, b, c); <span class="comment">//2 1 3</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;第一个数字:&#123;2&#125;,第二个数字:&#123;0&#125;,第三个数字:&#123;1&#125;&quot;</span>, a, b, c); <span class="comment">//3 1 2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="交换变量"><a href="#交换变量" class="headerlink" title="交换变量"></a>交换变量</h2><ol>
+<li>利用第三个变量</li>
+<li>不利用第三个变量</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="built_in">int</span> n1 = <span class="number">2444</span>;</span><br><span class="line"><span class="built_in">int</span> n2 = <span class="number">21</span>;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;交换前n1=&#123;0&#125;,n2=&#123;1&#125;&quot;</span>, n1, n2);</span><br><span class="line"><span class="built_in">int</span> temp = n1;</span><br><span class="line">n1 = n2;</span><br><span class="line">n2 = temp;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;交换后n1=&#123;0&#125;,n2=&#123;1&#125;&quot;</span>, n1, n2);</span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="built_in">int</span> n1 = <span class="number">2444</span>;</span><br><span class="line"><span class="built_in">int</span> n2 = <span class="number">21</span>;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;交换前n1=&#123;0&#125;,n2=&#123;1&#125;&quot;</span>, n1, n2);</span><br><span class="line">n1 = n1 - n2; <span class="comment">//-10</span></span><br><span class="line">n2 = n1 + n2; <span class="comment">//10</span></span><br><span class="line">n1 = n2 - n1; <span class="comment">//20</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;交换后n1=&#123;0&#125;,n2=&#123;1&#125;&quot;</span>, n1, n2);</span><br></pre></td></tr></table></figure>
+
+<h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><p><a href="https://www.cnblogs.com/shengtianlong/archive/2010/06/11/1756366.html">https://www.cnblogs.com/shengtianlong/archive/2010/06/11/1756366.html</a></p>
+<ul>
+<li><strong>\ </strong>—&gt;消除紧随其后的字符的原有含义</li>
+<li>只要语句前加＠号，即表示＠号后面的包括有转义符的都按<strong>不进行转义运算</strong>，让<strong>字符串按编辑原格式</strong>输出</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">\n ------------------------- 换行</span><br><span class="line">\r ------------------------- 回车</span><br><span class="line">\t ------------------------- 制表符</span><br><span class="line">\b ------------------------- 退格,在字符串两边没效果</span><br><span class="line">\f ------------------------- 换页</span><br><span class="line">\<span class="number">0</span> ------------------------- 空符号</span><br><span class="line">\<span class="string">&quot; ------------------------- 双引号</span></span><br><span class="line"><span class="string">\&#x27; -------------------------单引号</span></span><br><span class="line"><span class="string">\\ -------------------------反斜杠</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><ul>
+<li>所有类型都可以转换为string类型</li>
+</ul>
+<p>1.自动类型转换 (隐式类型转换)</p>
+<ul>
+<li>两种类型兼容 —&gt; int 和 double 都是数字型，兼容</li>
+<li>目标类型大于源类型 —&gt; 小的转大的 int→double</li>
+</ul>
+<p>2.强制类型转换 (显示式类型转换)</p>
+<ul>
+<li>两种类型兼容 —&gt; int 和 double 都是数字型，兼容</li>
+<li>目标类型小于源类型 —&gt;大的转小的 double→int</li>
+<li>语法：(目标类型)源类型；</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1</span></span><br><span class="line"> <span class="built_in">int</span> b = <span class="number">5</span>;</span><br><span class="line"> <span class="built_in">double</span> d = b; </span><br><span class="line"> <span class="comment">//2</span></span><br><span class="line"> <span class="built_in">double</span> c = <span class="number">10.6</span>;</span><br><span class="line"> <span class="built_in">int</span> a = (<span class="built_in">int</span>)c;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Convert 类型转换<ul>
+<li>非兼容的时候用 —&gt; string → int或double</li>
+<li>本质内部调用了 int.Parse();</li>
+</ul>
+</li>
+</ol>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><ol>
+<li>++</li>
+<li>—</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">a++ -&gt; 先拿原值运算，自身再+<span class="number">1</span></span><br><span class="line">++a -&gt; 先自身+<span class="number">1</span>，再拿+<span class="number">1</span>后的值运算</span><br><span class="line">a-- -&gt; 先拿原值运算，自身再<span class="number">-1</span></span><br><span class="line">--a -&gt; 先自身<span class="number">-1</span>，再拿<span class="number">-1</span>后的值运算</span><br></pre></td></tr></table></figure>
+
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><blockquote>
+<p>描述2者之间关系，返回boolean类型</p>
+</blockquote>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span> &gt; <span class="number">1</span>; <span class="literal">true</span></span><br><span class="line"><span class="number">2</span> &lt; <span class="number">1</span>; <span class="literal">false</span></span><br><span class="line"><span class="number">3</span> &gt;= <span class="number">11</span>; <span class="literal">false</span></span><br><span class="line"><span class="number">2</span> &lt;= <span class="number">111</span>; <span class="literal">true</span></span><br><span class="line"><span class="number">2</span> == <span class="number">3</span>; <span class="literal">false</span></span><br><span class="line"><span class="number">2</span> != <span class="number">2</span>; <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">&amp;&amp; 逻辑与 a &amp;&amp; b 两者都为<span class="literal">true</span>,程序才为<span class="literal">true</span></span><br><span class="line">|| 逻辑或 a || b 两者其一为<span class="literal">true</span>,程序为<span class="literal">true</span></span><br><span class="line">!  逻辑非 取反操作</span><br><span class="line"></span><br><span class="line">逻辑与 优先级 》 逻辑或 优先级</span><br><span class="line"></span><br><span class="line"><span class="built_in">bool</span> a  = <span class="number">5</span> &lt; <span class="number">3</span> &amp;&amp; <span class="number">5</span> &gt; <span class="number">3</span>; 后面的判断不会执行</span><br><span class="line"><span class="built_in">bool</span> a  = <span class="number">5</span> &gt; <span class="number">3</span> || <span class="number">5</span> &lt; <span class="number">3</span>; 后面的判断不会执行</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="复合赋值运算符"><a href="#复合赋值运算符" class="headerlink" title="复合赋值运算符"></a>复合赋值运算符</h3><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">+=</span><br><span class="line">-=</span><br><span class="line">*=</span><br><span class="line">/=</span><br></pre></td></tr></table></figure>
+
+<h3 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h3><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">a&gt;b?a:b;</span><br><span class="line">a&gt;b <span class="literal">true</span> <span class="keyword">return</span> a</span><br><span class="line">a&gt;b <span class="literal">false</span> <span class="keyword">return</span> b</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>()&#123;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>()&#123;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">switch</span>()&#123;</span><br><span class="line">  <span class="keyword">case</span> A:</span><br><span class="line">   ...</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> B:</span><br><span class="line">   ...</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">case</span> C:</span><br><span class="line">   ...</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line">   ...</span><br><span class="line">   <span class="literal">default</span>:</span><br><span class="line">   ...</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">finally</span>:</span><br><span class="line">   ...</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">- <span class="keyword">case</span> 下面语句完全一样可写在一起</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    Console.Write(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">    <span class="keyword">break</span>; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">while</span>();</span><br><span class="line">先判断，在执行，推荐 <span class="keyword">while</span></span><br><span class="line">首先执行一次，拿结果去判断循环条件，推荐 <span class="function"><span class="keyword">do</span> <span class="keyword">while</span></span></span><br><span class="line"><span class="function"><span class="title">for</span>(<span class="params">;;</span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">已知循环次数 -&gt; <span class="keyword">for</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><ul>
+<li>可以跳出switch case结构</li>
+<li>可以跳出当前的while循环</li>
+</ul>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><ul>
+<li>跳出当前循环，继续下一个循环</li>
+</ul>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><ul>
+<li>默认可以跟int类型互相转换(<strong>强转</strong>)，相互兼容,转换一个枚举里面不存在的值时，显示<strong>数字</strong></li>
+<li>enum → string 直接调用ToString()</li>
+<li>string → enum  (要转换的枚举类型) Enum.Parse(typeof(要转换的枚举类型),”要转换的字符串”);</li>
+<li>转换的字符串是数字+枚举里面不存在—》不会抛异常</li>
+<li>转换的字符串是文本+枚举里面不存在—》抛异常</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//语法 枚举名--&gt;符合 pascal命名规范</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">public</span>) <span class="built_in">enum</span> 枚举名&#123;</span><br><span class="line">      值<span class="number">1</span>,</span><br><span class="line">      值<span class="number">2</span>,</span><br><span class="line">      ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以下是一个示例，展示了如何将字符串转换为枚举值：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">enum</span> DaysOfWeek</span><br><span class="line">&#123;</span><br><span class="line">    Monday,</span><br><span class="line">    Tuesday,</span><br><span class="line">    Wednesday,</span><br><span class="line">    Thursday,</span><br><span class="line">    Friday,</span><br><span class="line">    Saturday,</span><br><span class="line">    Sunday</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> todayString = <span class="string">&quot;Monday&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将字符串转换为枚举值</span></span><br><span class="line">        DaysOfWeek today = (DaysOfWeek)Enum.Parse(<span class="keyword">typeof</span>(DaysOfWeek), todayString);</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Today is &quot;</span> + today);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的示例中，我们定义了一个名为DaysOfWeek的枚举类型，它包含了一周中的每一天。<br>在Main方法中，我们创建了一个todayString变量，并将其赋值为字符串”Monday”。<br>然后，我们使用Enum.Parse()方法将todayString转换为枚举值。我们需要传递两个参数：要转换的枚举类型（typeof(DaysOfWeek)）和要转换的字符串值（todayString）。转换结果被强制转换为DaysOfWeek类型，并存储在today变量中。<br>最后，我们使用Console.WriteLine方法打印出今天是星期几。<br>输出结果将是：”Today is Monday”。<br>需要注意的是，如果要转换的字符串值不是有效的枚举常量名称，将会抛出ArgumentException异常。因此，在进行字符串到枚举的转换时，确保字符串值与枚举常量名称匹配。</p>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><blockquote>
+<p>可以帮助我们一次性声明多个不同类型的变量</p>
+</blockquote>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> 结构名</span><br><span class="line">&#123;</span><br><span class="line">成员<span class="number">1</span>; </span><br><span class="line">成员<span class="number">2</span>;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在C#中，结构（Struct）是一种用户自定义的值类型。结构可以包含数据成员和方法，类似于类（Class），但有一些重要的区别。<br>以下是一个示例，展示了如何定义和使用结构：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> Point</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> X;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Y;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Point</span>(<span class="params"><span class="built_in">int</span> x, <span class="built_in">int</span> y</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        X = x;</span><br><span class="line">        Y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Display</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;X: &quot;</span> + X + <span class="string">&quot;, Y: &quot;</span> + Y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Point p1 = <span class="keyword">new</span> Point(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">        p1.Display();</span><br><span class="line"></span><br><span class="line">        Point p2;</span><br><span class="line">        p2.X = <span class="number">30</span>;</span><br><span class="line">        p2.Y = <span class="number">40</span>;</span><br><span class="line">        p2.Display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的示例中，我们定义了一个名为Point的结构。它有两个公共的数据成员X和Y，以及一个构造函数和一个Display方法。<br>在Main方法中，我们创建了两个Point结构的实例。首先，我们使用构造函数创建了一个p1实例，并传递了初始值10和20。然后，我们调用p1.Display()方法来显示p1的坐标。<br>接下来，我们创建了一个未初始化的p2实例，并分别为其X和Y成员赋值为30和40。然后，我们调用p2.Display()方法来显示p2的坐标。<br>结构是值类型，所以当你将一个结构赋值给另一个结构时，会进行值的复制。这意味着每个结构实例都有自己的独立副本。</p>
+<h3 id="与类的区别"><a href="#与类的区别" class="headerlink" title="与类的区别"></a>与类的区别</h3><p>结构（Struct）和类（Class）是两种不同的类型，它们有一些重要的区别。下面是结构和类之间的一些主要区别：</p>
+<ol>
+<li>值类型 vs 引用类型：结构是值类型，而类是引用类型。当你将一个结构赋值给另一个变量或传递给方法时，会进行值的复制。而类的实例是通过引用进行传递和共享的。</li>
+<li>内存分配：结构的实例在栈上分配内存，而类的实例在堆上分配内存。这意味着结构的创建和销毁速度更快，而类的实例需要进行垃圾回收。</li>
+<li>默认构造函数：结构可以定义默认构造函数，它会自动初始化结构的字段。而类必须显式定义构造函数，否则会有一个默认的无参构造函数。</li>
+<li>继承：类支持继承，可以通过派生类扩展和重用代码。而结构不能继承其他结构或类，但可以实现接口。</li>
+<li>可空性：结构可以是可空的，即可以使用Nullable<T>类型来表示可能为空的结构。而类默认情况下是可空的，可以为其引用变量赋值为null。<br>6.性能：由于结构是值类型，它们通常比类更高效。结构的复制操作比引用传递更快，适用于存储小型数据和简单值类型。</li>
+</ol>
+<p>结构适用于表示简单的值类型，如坐标、日期、颜色等。它们通常用于堆栈分配的小型对象，或者在需要高性能和低内存消耗的情况下使用。<br>类适用于表示复杂的对象，具有更多的功能和行为。它们通常用于堆分配的大型对象，或者在需要继承、多态和动态扩展的情况下使用。<br>需要根据具体的需求和场景来选择使用结构还是类。在设计和编写代码时，理解结构和类之间的区别非常重要，以便选择适当的类型来满足需求。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>一次性存储多个相同类型的变量，数组长度一但被<strong>固定</strong>，<strong>不能修改</strong></p>
+<p>语法：(声明方式)</p>
+<p>数组类型[] 数组名 &#x3D; new 数组类型[数组长度];</p>
+<p>数组类型[] 数组名 &#x3D; {值1,值2,…….};</p>
+<p>通过上面语法，会在内存里面开辟连续的 数组长度 块内存空间，每个块叫做 元素</p>
+<p>访问元素 → 数组索引或者下标(从0开始)</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>一堆代码进行重用的机制</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> 返回值 方法名(参数<span class="number">1</span>,参数<span class="number">2.</span>..)&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> 返回值类型;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用语法：</p>
+<p>类名.方法名();</p>
+<ul>
+<li>如果方法和Main函数在同一个类 ，类名可省略</li>
+<li>方法内部想调用 Main函数里面的值<ul>
+<li>传参到方法</li>
+<li>使用静态字段模拟全局变量 → public static int _num &#x3D; 10;</li>
+</ul>
+</li>
+<li>形参或者实参 都在内存开辟了空间。</li>
+<li>方法功能一定要单一</li>
+</ul>
+<h3 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h3><p>  方法重载是指在同一个类中定义<strong>多个具有相同名称但参数列表不同的方法</strong>。通过方法重载，可以根据不同的参数类型和数量来调用不同的方法。</p>
+<p>  需要注意的是，方法重载的条件是方法名称相同，但参数列表必须不同（包括<strong>参数类型、参数个数或参数顺序</strong>）。</p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>递归是指一个方法调用自身的过程。</p>
+<p>需要注意的是，在使用递归时，必须确保存在<strong>递归终止条件</strong>，否则递归将无限循环，导致堆栈溢出错误。</p>
+<h2 id="out-ref-params"><a href="#out-ref-params" class="headerlink" title="out ref params"></a>out ref params</h2><h3 id="out"><a href="#out" class="headerlink" title="out"></a>out</h3><p>在C#中，使用out关键字可以将参数声明为输出参数。以下是一些使用out参数时需要注意的事项：</p>
+<ol>
+<li>在方法内部，out参数必须在方法体内被赋值。这是因为out参数在方法调用之前不需要初始化，但在方法结束时必须有一个值。</li>
+<li>在方法调用时，out参数必须在参数列表中使用out关键字进行声明。这样可以告诉编译器该参数是一个输出参数。</li>
+<li>在方法调用之前，不需要对out参数进行初始化。因为在方法内部，out参数必须在方法体内被赋值。</li>
+<li>out参数可以在方法内部被赋值多次。这是因为out参数在方法调用之前不需要初始化，而是在方法内部被赋值。</li>
+<li>在方法调用之后，可以使用out参数的值。因为out参数在方法结束时必须有一个值，所以可以在方法调用之后使用该值。</li>
+<li>在方法调用时，可以使用out参数的引用传递。这意味着在方法内部对out参数的修改将反映在方法调用者的变量中。</li>
+</ol>
+<p>总之，out参数是一种用于从方法中返回多个值的方式。使用out参数时，请确保在方法内部对其进行赋值，并在方法调用之后使用其值。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CalculateSumAndProduct</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b, <span class="keyword">out</span> <span class="built_in">int</span> sum, <span class="keyword">out</span> <span class="built_in">int</span> product</span>)</span></span><br><span class="line"> &#123;</span><br><span class="line">     sum = a + b;</span><br><span class="line">     product = a * b;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 调用方法</span></span><br><span class="line"> <span class="built_in">int</span> x, y;</span><br><span class="line"> CalculateSumAndProduct(<span class="number">3</span>, <span class="number">4</span>, <span class="keyword">out</span> x, <span class="keyword">out</span> y);</span><br><span class="line"> Console.WriteLine(<span class="string">&quot;Sum: &quot;</span> + x); <span class="comment">// 输出 Sum: 7</span></span><br><span class="line"> Console.WriteLine(<span class="string">&quot;Product: &quot;</span> + y); <span class="comment">// 输出 Product: 12</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><p>  在C#中，ref关键字用于传递参数的引用。通过使用ref关键字，可以在方法内部修改传递给方法的参数的值，并且这些修改将在方法调用结束后保持有效。</p>
+<p>使用ref关键字时，需要注意以下几点：</p>
+<ol>
+<li>在方法定义和方法调用的参数列表中都要使用ref关键字。</li>
+<li>调用方法时，传递给ref参数的变量必须已经初始化。</li>
+<li>ref参数必须在方法内部进行初始化，否则会导致编译错误。</li>
+<li>ref参数可以是值类型或引用类型。<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Increment</span>(<span class="params"><span class="keyword">ref</span> <span class="built_in">int</span> number</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    number++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用方法</span></span><br><span class="line"><span class="built_in">int</span> <span class="keyword">value</span> = <span class="number">5</span>;</span><br><span class="line">Increment(<span class="keyword">ref</span> <span class="keyword">value</span>);</span><br><span class="line">Console.WriteLine(<span class="keyword">value</span>); <span class="comment">// 输出 6</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="params"><a href="#params" class="headerlink" title="params"></a>params</h3><p>在C#中，params关键字用于定义一个方法参数，该参数可以接受可变数量的参数。使用params关键字可以使方法在调用时可以传递不同数量的参数，而不需要显式地创建一个数组来传递参数。</p>
+<p>使用params关键字的方法可以接受零个或多个参数，也可以与其他参数一起使用。但是，每个方法只能有一个params参数，并且必须是方法的最后一个参数。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">int</span> <span class="title">CalculateSum</span>(<span class="params"><span class="keyword">params</span> <span class="built_in">int</span>[] numbers</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="built_in">int</span> number <span class="keyword">in</span> numbers)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += number;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用方法</span></span><br><span class="line"><span class="built_in">int</span> result = CalculateSum(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line">Console.WriteLine(result); <span class="comment">// 输出 15</span></span><br></pre></td></tr></table></figure>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>  面向过程是一种以<strong>过程</strong>为中心的编程方法，它将程序分解为一系列的步骤或函数，每个步骤按照特定的顺序执行。在面向过程编程中，数据和函数是分离的，函数通过传递参数来操作数据。这种编程范式适合解决简单的问题，但对于复杂的程序来说，代码可读性和可维护性可能会变差。</p>
+<p>  面向对象是一种以<strong>对象</strong>为中心的编程方法，它将程序组织为一组相互作用的对象。每个对象都有自己的状态（属性）和行为（方法），并且可以通过消息传递来与其他对象进行交互。面向对象编程强调代码的重用性和模块化，使得程序更易于理解、扩展和维护。</p>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>  在C#中，类是一种用户自定义的数据类型，用于定义对象的属性和行为。对象是类的实例，它具有类定义的属性和行为。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> 类名&#123;</span><br><span class="line">    字段；</span><br><span class="line">    属性；</span><br><span class="line">    方法；</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//对象</span></span><br><span class="line">类名 类 = <span class="keyword">new</span> 类名();</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>属性（Property）是一种特殊的成员，用于封装类的字段（Field）。属性提供了一种访问和修改类的字段的方式，同时还可以在访问和修改字段时执行额外的逻辑。</p>
+<p>属性由两个访问器组成：get 访问器和 set 访问器。get 访问器用于获取属性的值，而 set 访问器用于设置属性的值。属性可以具有不同的访问修饰符，例如 public、private、protected 等。</p>
+<h3 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h3><p>在C#中，权限修饰符用于控制类、方法、属性和字段的访问级别。以下是C#中常用的权限修饰符：</p>
+<ol>
+<li>public：公共权限修饰符，表示可以从任何地方访问该成员。</li>
+<li>private：私有权限修饰符，表示只能在当前类中访问该成员。</li>
+<li>protected：受保护权限修饰符，表示只能在当前类及其派生类中访问该成员。</li>
+<li>internal：内部权限修饰符，表示只能在当前程序集中访问该成员。</li>
+<li>protected internal：受保护内部权限修饰符，表示只能在当前程序集中或者当前类及其派生类中访问该成员。</li>
+</ol>
+<p>这些权限修饰符可以用于类的成员（方法、属性和字段），以控制它们的可见性和访问级别。根据需要，你可以选择适当的权限修饰符来限制或公开你的代码中的成员。</p>
+<h3 id="静态和非静态区别"><a href="#静态和非静态区别" class="headerlink" title="静态和非静态区别"></a>静态和非静态区别</h3><ol>
+<li>非静态类中，可以有实例成员，也可以有静态成员</li>
+<li>在调用实例成员的时候，需要使用 对象名.实例成员<ul>
+<li>在调用静态成员的时候，需要使用 类名.静态成员</li>
+</ul>
+</li>
+</ol>
+<p>总结：</p>
+<ul>
+<li><p>静态成员必须使用类名调用，而实例成员使用对象名调用</p>
+</li>
+<li><p>静态函数中，只能访问静态成员，不能访问实例成员</p>
+</li>
+<li><p>实例函数中，可以访问静态成员，也可以访问实例成员</p>
+</li>
+<li><p>静态类只允许有静态成员，不允许出现实例成员</p>
+<h3 id="静态类"><a href="#静态类" class="headerlink" title="静态类"></a>静态类</h3></li>
+</ul>
+<ol>
+<li><p>当工具类使用</p>
+</li>
+<li><p>在整个项目中资源共享</p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p> 作用:帮助我们初始化对象(给对象的每个属性依次的赋值) </p>
+<p> 构造函数是一个特殊的方法:</p>
+<p> 1)、构造函数没有返回值，连void也不能写.</p>
+<p> 2)、构造函数的名称必须跟类名一样。</p>
+<p> 创建对象的时候会执行构造函数</p>
+<p> 构造函数是可以有重载的。</p>
+<p> 类当中会有一个默认的无参数的构造函数，当你写一个新的构造函数之后，不管是无参数的，那个默认的无参数的构造函数都被干掉了。|</p>
+<h4 id="new关键字"><a href="#new关键字" class="headerlink" title="new关键字"></a>new关键字</h4><p> new帮助我们做了3件事儿: .</p>
+<p> 1)、 在内存中开辟一 块空间</p>
+<p> 2)、在开辟的空间中创建对象</p>
+<p> 3)、调用对象的构造函数进行初始化对象</p>
+<h4 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字"></a>this 关键字</h4><ol>
+<li>代表当前类的对象</li>
+<li>在 类中显示的调用本类的构造函数</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Student</span>(<span class="params"><span class="built_in">string</span> name, <span class="built_in">int</span> age, <span class="built_in">char</span> gender, <span class="built_in">int</span> chinese, <span class="built_in">int</span> math, <span class="built_in">int</span> english</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">this</span>.Name = name;</span><br><span class="line">            <span class="keyword">this</span>.Age = age;</span><br><span class="line">            <span class="keyword">this</span>.Gender = gender;</span><br><span class="line">            <span class="keyword">this</span>.Chinese = chinese;</span><br><span class="line">            <span class="keyword">this</span>.Math = math;</span><br><span class="line">            <span class="keyword">this</span>.English = english;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span>(<span class="params"><span class="built_in">string</span> name, <span class="built_in">int</span> chinese, <span class="built_in">int</span> math, <span class="built_in">int</span> english</span>):<span class="title">this</span>(<span class="params">name, <span class="number">0</span>, <span class="string">&#x27;a&#x27;</span>, chinese, math, english</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>命名空间（Namespace）是一种用于组织和管理代码的机制。它可以将相关的类、结构、接口和其他类型组织在一起，以便更好地管理和维护代码。</p>
+<p>通过使用命名空间，我们可以避免命名冲突，并将代码按照逻辑和功能进行组织。命名空间可以嵌套，可以包含其他命名空间，形成层次结构。</p>
+<p>项目A引用项目B中的类</p>
+<ol>
+<li>添加引用</li>
+<li>引用命名空间</li>
+</ol>
+<h2 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h2><ol>
+<li>值类型存储在内存的 栈 中，引用类型存储在内存的 堆 中<ol>
+<li>值类型：int double bool char decimal struct enum</li>
+<li>引用类型: string 自定义类 数组</li>
+</ol>
+</li>
+</ol>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><p>在C#中，字符串（string）是一种表示文本数据的数据类型。以下是一些C#字符串的特性：</p>
+<ol>
+<li>不可变性：字符串在创建后是不可变的，这意味着一旦创建，就不能更改字符串的内容。如果对字符串进行修改，实际上是创建了一个新的字符串对象。</li>
+<li>字符串字面量：C#中的字符串可以使用双引号（”）括起来表示，例如：”Hello, World!”。这些被称为字符串字面量，它们可以直接在代码中使用。</li>
+<li>字符串连接：可以使用加号（+）运算符将两个字符串连接起来，形成一个新的字符串。例如，”Hello, “ + “World!” 将得到 “Hello, World!”。</li>
+<li>字符串插值：C# 6.0及更高版本支持字符串插值，可以在字符串中嵌入表达式或变量。使用$符号和花括号（{}）将表达式或变量括起来。例如，string name &#x3D; “Alice”; string greeting &#x3D; $”Hello, {name}!”; 将得到 “Hello, Alice!”。</li>
+<li>字符串长度：可以使用Length属性获取字符串的长度，即字符串中字符的数量。</li>
+<li>字符串比较：可以使用Equals方法或&#x3D;&#x3D;运算符来比较两个字符串是否相等。注意，字符串比较是区分大小写的。</li>
+<li>字符串格式化：可以使用字符串的Format方法或者使用$符号进行字符串格式化。这允许将变量或表达式的值插入到字符串中的特定位置。</li>
+</ol>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> name = <span class="string">&quot;  Micheal Liang  &quot;</span>;</span><br><span class="line">            <span class="comment">//1.Length 获取字符串的长度，即字符串中字符的个数(包括空格).</span></span><br><span class="line">            Console.WriteLine(name.Length);</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//2.ToLower 返回一个新的字符串，将字符串中的大写字母转换成小写字母.</span></span><br><span class="line">            Console.WriteLine(name.ToLower());</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//3.ToUpper 返回一个新的字符串，将字符串中的小写字母转换成大写字母.</span></span><br><span class="line">            Console.WriteLine(name.ToUpper());</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//4.Trim返回一个新的字符串，不带任何参数时表示将原字符串中前后的空格删除.</span></span><br><span class="line">            Console.WriteLine(name.Trim());</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//5.TrimStart返回一个新的字符串，删除前面空格</span></span><br><span class="line">            Console.WriteLine(name.TrimStart());</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//6.TrimEnd返回一个新的字符串,删除最后的空格</span></span><br><span class="line">            Console.WriteLine(name.TrimEnd());</span><br><span class="line"> </span><br><span class="line">            <span class="built_in">string</span> name2 = <span class="string">&quot;helleWord&quot;</span>;</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//7.IndexOf 返回整数，得到指定的字符串在原字符串中第一次出现的位置.    未出现返回-1</span></span><br><span class="line">            Console.WriteLine(name2.IndexOf(<span class="string">&quot;W&quot;</span>));   <span class="comment">//5  出现在索引5的位置上上</span></span><br><span class="line"> </span><br><span class="line">            <span class="comment">//8.Remove 返回一个新的字符串，将字符串中指定位置的字符串移除.</span></span><br><span class="line">            Console.WriteLine(name2.Remove(<span class="number">4</span>)); <span class="comment">//hell   当只有一个数值的时候，返回数值长度的字符串 </span></span><br><span class="line">            Console.WriteLine(name2.Remove(<span class="number">2</span>, <span class="number">4</span>)); <span class="comment">//heord 当有两个数值的时候，则会从第一个数值的位置上开始删除，第二个数值长度的数量然后返回字符串的长度。</span></span><br><span class="line"> </span><br><span class="line">            <span class="comment">//9. Substring 返回一个新的字符串，用于截取指定的字符串.</span></span><br><span class="line">            Console.WriteLine(name2.Substring(<span class="number">3</span>));   <span class="comment">//leWord  截取值后面的字符串（包括截取值）</span></span><br><span class="line"> </span><br><span class="line">            <span class="comment">//10. Insert 返回一个新的字符串，将一个字符串插入到另一个字符串中指定索引的位置. </span></span><br><span class="line">            Console.WriteLine(name2.Insert(<span class="number">5</span>, <span class="string">&quot;ABC&quot;</span>));      <span class="comment">//helleABCWord</span></span><br><span class="line"> </span><br><span class="line">            <span class="comment">//11.split是将字符串按照某个字符拆分成一个字符串数组</span></span><br><span class="line">            <span class="built_in">string</span> name3 = <span class="string">&quot;xiaoming,xiaofang,xiaoxu&quot;</span>;</span><br><span class="line">            <span class="built_in">string</span>[] strArray = (name3.Split(<span class="string">&quot;,&quot;</span>));</span><br><span class="line">            <span class="keyword">foreach</span> (<span class="built_in">string</span> str <span class="keyword">in</span> strArray)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(str);</span><br><span class="line">                <span class="comment">/* xiaoming</span></span><br><span class="line"><span class="comment">                 xiaoxu</span></span><br><span class="line"><span class="comment">                 xiaofang*/</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/baifeng66/photos/master/img/20230924101819.png"><br>这些是C#字符串的一些主要特性。使用字符串时，请记住字符串是不可变的，因此在需要修改字符串内容时，应该创建一个新的字符串对象。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承是一种面向对象编程的重要概念，它允许一个类（称为子类或派生类）从另一个类（称为父类或基类）继承属性和方法。子类可以继承父类的成员，并且可以添加自己的成员或修改继承的成员。<br>下面是一个简单的示例，展示了如何在C#中使用继承：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Animal</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Eat</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;The animal is eating.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Dog</span> : <span class="title">Animal</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Bark</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;The dog is barking.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Dog dog = <span class="keyword">new</span> Dog();</span><br><span class="line">        dog.Eat(); <span class="comment">// 调用继承自Animal类的Eat方法</span></span><br><span class="line">        dog.Bark(); <span class="comment">// 调用Dog类自己的Bark方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在上面的示例中，我们定义了一个Animal类，它有一个Eat方法。然后，我们定义了一个Dog类，它继承自Animal类，并且有一个自己的Bark方法。<br>在Main方法中，我们创建了一个Dog对象，并调用了它继承自Animal类的Eat方法和自己的Bark方法。<br>继承的好处是可以实现代码的重用和扩展。子类可以继承父类的属性和方法，从而避免重复编写相同的代码，但是子类不会继承父类的私有字段。同时，子类还可以添加自己的特定行为和属性，以满足特定的需求。<br>需要注意的是，C#中的类只支持单继承，即一个类只能继承自一个父类。但是，可以通过接口实现多重继承的效果。<br>同时，子类并没有继承父类的构造方法，只是子类会<strong>默认</strong>调用父类的无参构造方法，从而创建父类对象，让子类可以使用父类中的成员。<br>当父类重写了有参构造函数之后，无参构造函数就会被干掉，子类无法调用。<br>解决办法：</p>
+<ol>
+<li>父类中重写一个无参构造函数</li>
+<li>在子类中显式调用父类的有参构造函数，使用关键字:base()<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Person</span>(<span class="params"><span class="built_in">string</span> name,<span class="built_in">int</span> age,<span class="built_in">char</span> gender</span>)</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">this</span>.Name = name;</span><br><span class="line">			<span class="keyword">this</span>.Age = age;</span><br><span class="line">			<span class="keyword">this</span>.Gender = Gender;</span><br><span class="line">		&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span>(<span class="params"><span class="built_in">string</span> name,<span class="built_in">int</span> age,<span class="built_in">char</span> gender,<span class="built_in">int</span> id</span>) : <span class="title">base</span>(<span class="params">name,age,gender</span>)</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">this</span>.Id = id;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="new关键字-1"><a href="#new关键字-1" class="headerlink" title="new关键字"></a>new关键字</h3><ol>
+<li>创建对象</li>
+<li>隐藏从父类那里继承过来的<strong>同名</strong>成员<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span>()</span></span><br><span class="line">	&#123;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;我是父类的sayHello()方法&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">new</span> <span class="keyword">void</span> <span class="title">sayHello</span>()</span></span><br><span class="line">	&#123;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;大家好，我叫&#123;0&#125;,我的爱好是&#123;1&#125;&quot;</span>,<span class="keyword">this</span>.Name,<span class="keyword">this</span>.Hobby);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>编程,net</category>
+      </categories>
+      <tags>
+        <tag>c#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>c#基础笔记(二)</title>
+    <url>/2023/09/24/c-base-notes02/</url>
+    <content><![CDATA[<h1 id="基础（二）"><a href="#基础（二）" class="headerlink" title="基础（二）"></a>基础（二）</h1><h2 id="里氏转换"><a href="#里氏转换" class="headerlink" title="里氏转换"></a>里氏转换</h2><p>里氏转换（Liskov Substitution Principle）是面向对象编程中的一个重要原则，它允许你将一个子类的实例赋值给父类的引用变量。这种转换是安全的，因为子类对象可以替代父类对象在大多数情况下的使用。</p>
+<ol>
+<li><p>如果父类里面装的是子类对象，那么可以将这个父类强转为子类对象。</p>
+</li>
+<li><p>子类对象可以调用父类中的成员，但是父类对象永远都只能调用自己的成员。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Animal</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">MakeSound</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;The animal makes a sound.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Dog</span> : <span class="title">Animal</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">MakeSound</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;The dog barks.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Animal animal = <span class="keyword">new</span> Dog(); <span class="comment">// 里氏转换，将子类对象赋值给父类引用变量</span></span><br><span class="line">        animal.MakeSound(); <span class="comment">// 调用的是子类的方法，输出 &quot;The dog barks.&quot;</span></span><br><span class="line">        Dog d = (Dog) animal; <span class="comment">// 将这个父类强转为子类对象</span></span><br><span class="line">        d.MakeSound();<span class="comment">// 调用的是子类的方法，输出 &quot;The dog barks.&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>除了使用里氏转换（Liskov Substitution Principle）外，还可以使用is和as运算符来进行类型检查和类型转换。</p>
+</li>
+<li><p>is 运算符：用于检查一个对象是否是指定类型的实例。它返回一个布尔值，表示对象是否可以转换为指定类型。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"> Animal animal = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="keyword">if</span> (animal <span class="keyword">is</span> Dog)</span><br><span class="line">&#123;</span><br><span class="line">    Dog dog = (Dog)animal; <span class="comment">// 进行显式类型转换</span></span><br><span class="line">    dog.Bark();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的示例中，我们首先使用is运算符检查animal对象是否是Dog类型的实例。如果是，我们进行显式类型转换，将animal转换为Dog类型，并调用Bark方法。</p>
+</li>
+<li><p>as 运算符：用于尝试将一个对象转换为指定类型的实例。如果转换成功，返回转换后的对象；如果转换失败，返回null。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Animal animal = <span class="keyword">new</span> Dog();</span><br><span class="line">Dog dog = animal <span class="keyword">as</span> Dog;</span><br><span class="line"><span class="keyword">if</span> (dog != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    dog.Bark();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在上面的示例中，我们使用as运算符将animal对象转换为Dog类型的实例。如果转换成功，将返回转换后的Dog对象；如果转换失败，将返回null。然后，我们检查dog是否为null，如果不为null，则调用Bark方法。</p>
+</li>
+</ol>
+<p>使用is和as运算符可以在进行类型转换时提供更安全的方式，避免出现类型转换异常。is运算符用于检查类型，as运算符用于尝试转换类型。</p>
+<h2 id="ArrayList集合"><a href="#ArrayList集合" class="headerlink" title="ArrayList集合"></a>ArrayList集合</h2><p>在C#中，ArrayList是一种动态数组，可以存储不同类型的对象。它位于System.Collections命名空间中。</p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ol>
+<li><p>public virtual int Add( object value );</p>
+<p> 在 ArrayList 的末尾添加一个对象。</p>
+</li>
+<li><p>public virtual void AddRange( ICollection c );</p>
+<p> 在 ArrayList 的末尾添加 ICollection 的元素。</p>
+</li>
+<li><p>public virtual void Clear();</p>
+<p> 从 ArrayList 中移除所有的元素。</p>
+</li>
+<li><p>public virtual bool Contains( object item );</p>
+<p> 判断某个元素是否在 ArrayList 中。</p>
+</li>
+<li><p>public virtual ArrayList GetRange( int index, int count );</p>
+<p> 返回一个 ArrayList，表示源 ArrayList 中元素的子集。</p>
+</li>
+<li><p>public virtual int IndexOf(object);</p>
+<p> 返回某个值在 ArrayList 中第一次出现的索引，索引从零开始。</p>
+</li>
+<li><p>public virtual void Insert( int index, object value );</p>
+<p> 在 ArrayList 的指定索引处，插入一个元素。</p>
+</li>
+<li><p>public virtual void InsertRange( int index, ICollection c );</p>
+<p> 在 ArrayList 的指定索引处，插入某个集合的元素。</p>
+</li>
+<li><p>public virtual void Remove( object obj );</p>
+<p> 从 ArrayList 中移除第一次出现的指定对象。</p>
+</li>
+<li><p>public virtual void RemoveAt( int index );</p>
+<p>移除 ArrayList 的指定索引处的元素。</p>
+</li>
+<li><p>public virtual void RemoveRange( int index, int count );</p>
+<p>从 ArrayList 中移除某个范围的元素。</p>
+</li>
+<li><p>public virtual void Reverse();</p>
+<p>逆转 ArrayList 中元素的顺序。</p>
+</li>
+<li><p>public virtual void SetRange( int index, ICollection c );</p>
+<p>复制某个集合的元素到 ArrayList 中某个范围的元素上。</p>
+</li>
+<li><p>public virtual void Sort();</p>
+<p>对 ArrayList 中的元素进行排序。</p>
+</li>
+<li><p>public virtual void TrimToSize();</p>
+<p>设置容量为 ArrayList 中元素的实际个数。</p>
+</li>
+</ol>
+<h3 id="长度问题"><a href="#长度问题" class="headerlink" title="长度问题"></a>长度问题</h3><p>Count和Capacity是两个不同的属性，它们之间有一些关系。<br>Count属性表示ArrayList中当前实际包含的元素数量。可以通过Count属性获取ArrayList中的元素数量，如下所示：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.Add(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">list.Add(<span class="string">&quot;World&quot;</span>);</span><br><span class="line"><span class="built_in">int</span> count = list.Count; <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>Capacity属性表示ArrayList内部数组的容量，即可以存储的元素数量上限。当ArrayList中的元素数量超过当前容量时，ArrayList会自动增加其容量(一般为一倍)以容纳更多的元素。可以通过Capacity属性获取ArrayList的当前容量，如下所示：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line"><span class="built_in">int</span> capacity = list.Capacity;</span><br></pre></td></tr></table></figure>
+<p>当向ArrayList中添加元素时，如果元素数量超过了当前容量，ArrayList会自动增加其容量。容量的增长策略是根据当前容量的大小来确定的，通常是以一定的增量进行扩展。具体的增长策略可以参考ArrayList的实现。</p>
+<p>如果希望在添加大量元素之前预先设置ArrayList的容量，可以使用EnsureCapacity方法来指定所需的容量。这样可以避免在添加元素时频繁地调整容量，提高性能，如下所示：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.EnsureCapacity(<span class="number">100</span>); <span class="comment">// 设置ArrayList的容量为100</span></span><br></pre></td></tr></table></figure>
+
+<p>总结来说，Count表示ArrayList中实际包含的元素数量，而Capacity表示ArrayList内部数组的容量。当元素数量超过容量时，ArrayList会自动增加容量以容纳更多的元素。可以使用EnsureCapacity方法来预先设置ArrayList的容量。</p>
+]]></content>
+      <categories>
+        <category>编程,net</category>
+      </categories>
+      <tags>
+        <tag>c#</tag>
+      </tags>
+  </entry>
+</search>
