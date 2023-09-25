@@ -297,6 +297,60 @@
       </tags>
   </entry>
   <entry>
+    <title>力扣-每日一题</title>
+    <url>/2023/09/24/%E5%8A%9B%E6%89%A3-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="9月"><a href="#9月" class="headerlink" title="9月"></a>9月</h1><h2 id="389-找不同-–09-23"><a href="#389-找不同-–09-23" class="headerlink" title="389. 找不同 –09&#x2F;23"></a>389. 找不同 –09&#x2F;23</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">给定两个字符串 s 和 t ，它们只包含小写字母。</span><br><span class="line"></span><br><span class="line">字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。</span><br><span class="line"></span><br><span class="line">请找出在 t 中被添加的字母。</span><br></pre></td></tr></table></figure>
+<p>示例 1：</p>
+<blockquote>
+<p>输入：s &#x3D; “abcd”, t &#x3D; “abcde”<br>解释：’e’ 是那个被添加的字母。<br>输出：”e”</p>
+</blockquote>
+<p>示例 2：</p>
+<blockquote>
+<p>输入：s &#x3D; “”, t &#x3D; “y”<br>输出：”y”</p>
+</blockquote>
+<h3 id="思路-by-自己"><a href="#思路-by-自己" class="headerlink" title="思路 by 自己"></a>思路 by 自己</h3><p>将要比较的t字符串先转换字符数组，然后通过 foreach循环去判断s字符串包不包含t转换的字符数组中的字符。</p>
+<p>示例1,2通过。可当 s&#x3D;”a”,t&#x3D;”aa”的时候，通过不了。返回为null。因为没考虑到这种情况！</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">char</span> <span class="title">FindTheDifference</span>(<span class="params"><span class="built_in">string</span> s, <span class="built_in">string</span> t</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="function"><span class="built_in">char</span> temp <span class="title">in</span> (<span class="params">t.ToCharArray(</span>)))</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!(s.Contains(temp)))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>接下来我的另外一种思路：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">char</span>[] cs = t.ToCharArray();</span><br><span class="line">    <span class="built_in">char</span>[] ts = <span class="keyword">new</span> <span class="built_in">char</span>[cs.Length];</span><br><span class="line">    <span class="comment">// 判断 s字符串是否包含t里面的字符，包含就放到ts字符数组，不包含就返回</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i =<span class="number">0</span>;i&lt; cs.Length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> ((s.Contains(cs[i])))</span><br><span class="line">        &#123;</span><br><span class="line">            ts[i] = cs[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> cs[i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Console.Write(ts.Length);</span><br><span class="line">    <span class="built_in">string</span> str = <span class="keyword">new</span> <span class="built_in">string</span>(ts);</span><br><span class="line">    Console.WriteLine(str);</span><br><span class="line"><span class="comment">// 判断生成的ts字符数组里面是否有重复的字符</span></span><br><span class="line"><span class="comment">//后面才想到其实这样也不对，要是s里面是2个a呢</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; ts.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (str.IndexOf(ts[i]) != str.LastIndexOf(ts[i]))&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> ts[i];</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&#x27; &#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路-by-他人-待续…"><a href="#思路-by-他人-待续…" class="headerlink" title="思路 by 他人 (待续…)"></a>思路 by 他人 (待续…)</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><ol>
+<li>全转换成字符数组，分别求和</li>
+<li>再把和相减，得到的值就是多出来的那个</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">char</span> <span class="title">FindTheDifference</span>(<span class="params"><span class="built_in">string</span> s, <span class="built_in">string</span> t</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">char</span>[] tt= t.ToCharArray();</span><br><span class="line">    <span class="built_in">int</span> tt_sum=<span class="number">0</span>, ss_sum=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">char</span>[] ss=s.ToCharArray();</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; tt.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        tt_sum += tt[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; ss.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ss_sum += ss[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">int</span> n= tt_sum - ss_sum;</span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">char</span>)n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><h2 id="1-两数之和-–09-24"><a href="#1-两数之和-–09-24" class="headerlink" title="1. 两数之和 –09&#x2F;24"></a>1. 两数之和 –09&#x2F;24</h2><p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>
+<p>你可以按任意顺序返回答案。</p>
+<p>示例 1：</p>
+<blockquote>
+<p>输入：nums &#x3D; [2,7,11,15], target &#x3D; 9</p>
+<p>输出：[0,1]</p>
+<p>解释：因为 nums[0] + nums[1] &#x3D;&#x3D; 9 ，返回 [0, 1] 。</p>
+</blockquote>
+<p>示例 2：</p>
+<blockquote>
+<p>输入：nums &#x3D; [3,2,4], target &#x3D; 6</p>
+<p>输出：[1,2]</p>
+</blockquote>
+<p>示例 3：</p>
+<blockquote>
+<p>输入：nums &#x3D; [3,3], target &#x3D; 6</p>
+<p>输出：[0,1]</p>
+</blockquote>
+<h4 id="思路-by-自己-1"><a href="#思路-by-自己-1" class="headerlink" title="思路 by 自己"></a>思路 by 自己</h4><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span>[] <span class="title">TwoSum</span>(<span class="params"><span class="built_in">int</span>[] nums, <span class="built_in">int</span> target</span>)</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="built_in">int</span>[] subscript =<span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>];</span><br><span class="line">       <span class="comment">//通过2个for循环判断 i j下标数字何时相加等于 target</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; nums.Length; i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="built_in">int</span> j = i+<span class="number">1</span>; j &lt; nums.Length; j++)</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="keyword">if</span> ((nums[i] + nums[j]) == target)</span><br><span class="line">               &#123;</span><br><span class="line">                   subscript[<span class="number">0</span>] = i;</span><br><span class="line">                   subscript[<span class="number">1</span>] = j;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> subscript;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>一开始还通过不了，因为写成了 int j &#x3D; 1;没写成每次第一个for循环结束时，j应该始终等于i的后面一个。不然j循环老是从小标1去开始比较，会出问题.</p>
+<h4 id="思路-by-他人"><a href="#思路-by-他人" class="headerlink" title="思路 by 他人"></a>思路 by 他人</h4><p>待续…</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>刷题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>c#基础笔记(二)</title>
     <url>/2023/09/24/c-base-notes02/</url>
     <content><![CDATA[<h1 id="基础（二）"><a href="#基础（二）" class="headerlink" title="基础（二）"></a>基础（二）</h1><h2 id="里氏转换"><a href="#里氏转换" class="headerlink" title="里氏转换"></a>里氏转换</h2><p>里氏转换（Liskov Substitution Principle）是面向对象编程中的一个重要原则，它允许你将一个子类的实例赋值给父类的引用变量。这种转换是安全的，因为子类对象可以替代父类对象在大多数情况下的使用。</p>
@@ -445,60 +499,6 @@
       </categories>
       <tags>
         <tag>c#</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>力扣-每日一题</title>
-    <url>/2023/09/24/%E5%8A%9B%E6%89%A3-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
-    <content><![CDATA[<h1 id="9月"><a href="#9月" class="headerlink" title="9月"></a>9月</h1><h2 id="389-找不同-–09-23"><a href="#389-找不同-–09-23" class="headerlink" title="389. 找不同 –09&#x2F;23"></a>389. 找不同 –09&#x2F;23</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">给定两个字符串 s 和 t ，它们只包含小写字母。</span><br><span class="line"></span><br><span class="line">字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。</span><br><span class="line"></span><br><span class="line">请找出在 t 中被添加的字母。</span><br></pre></td></tr></table></figure>
-<p>示例 1：</p>
-<blockquote>
-<p>输入：s &#x3D; “abcd”, t &#x3D; “abcde”<br>解释：’e’ 是那个被添加的字母。<br>输出：”e”</p>
-</blockquote>
-<p>示例 2：</p>
-<blockquote>
-<p>输入：s &#x3D; “”, t &#x3D; “y”<br>输出：”y”</p>
-</blockquote>
-<h3 id="思路-by-自己"><a href="#思路-by-自己" class="headerlink" title="思路 by 自己"></a>思路 by 自己</h3><p>将要比较的t字符串先转换字符数组，然后通过 foreach循环去判断s字符串包不包含t转换的字符数组中的字符。</p>
-<p>示例1,2通过。可当 s&#x3D;”a”,t&#x3D;”aa”的时候，通过不了。返回为null。因为没考虑到这种情况！</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">char</span> <span class="title">FindTheDifference</span>(<span class="params"><span class="built_in">string</span> s, <span class="built_in">string</span> t</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="function"><span class="built_in">char</span> temp <span class="title">in</span> (<span class="params">t.ToCharArray(</span>)))</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!(s.Contains(temp)))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>接下来我的另外一种思路：</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">char</span>[] cs = t.ToCharArray();</span><br><span class="line">    <span class="built_in">char</span>[] ts = <span class="keyword">new</span> <span class="built_in">char</span>[cs.Length];</span><br><span class="line">    <span class="comment">// 判断 s字符串是否包含t里面的字符，包含就放到ts字符数组，不包含就返回</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i =<span class="number">0</span>;i&lt; cs.Length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> ((s.Contains(cs[i])))</span><br><span class="line">        &#123;</span><br><span class="line">            ts[i] = cs[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> cs[i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Console.Write(ts.Length);</span><br><span class="line">    <span class="built_in">string</span> str = <span class="keyword">new</span> <span class="built_in">string</span>(ts);</span><br><span class="line">    Console.WriteLine(str);</span><br><span class="line"><span class="comment">// 判断生成的ts字符数组里面是否有重复的字符</span></span><br><span class="line"><span class="comment">//后面才想到其实这样也不对，要是s里面是2个a呢</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; ts.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (str.IndexOf(ts[i]) != str.LastIndexOf(ts[i]))&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> ts[i];</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&#x27; &#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路-by-他人-待续…"><a href="#思路-by-他人-待续…" class="headerlink" title="思路 by 他人 (待续…)"></a>思路 by 他人 (待续…)</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><ol>
-<li>全转换成字符数组，分别求和</li>
-<li>再把和相减，得到的值就是多出来的那个</li>
-</ol>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">char</span> <span class="title">FindTheDifference</span>(<span class="params"><span class="built_in">string</span> s, <span class="built_in">string</span> t</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">char</span>[] tt= t.ToCharArray();</span><br><span class="line">    <span class="built_in">int</span> tt_sum=<span class="number">0</span>, ss_sum=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">char</span>[] ss=s.ToCharArray();</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; tt.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        tt_sum += tt[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; ss.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ss_sum += ss[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">int</span> n= tt_sum - ss_sum;</span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">char</span>)n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><h2 id="1-两数之和-–09-24"><a href="#1-两数之和-–09-24" class="headerlink" title="1. 两数之和 –09&#x2F;24"></a>1. 两数之和 –09&#x2F;24</h2><p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>
-<p>你可以按任意顺序返回答案。</p>
-<p>示例 1：</p>
-<blockquote>
-<p>输入：nums &#x3D; [2,7,11,15], target &#x3D; 9</p>
-<p>输出：[0,1]</p>
-<p>解释：因为 nums[0] + nums[1] &#x3D;&#x3D; 9 ，返回 [0, 1] 。</p>
-</blockquote>
-<p>示例 2：</p>
-<blockquote>
-<p>输入：nums &#x3D; [3,2,4], target &#x3D; 6</p>
-<p>输出：[1,2]</p>
-</blockquote>
-<p>示例 3：</p>
-<blockquote>
-<p>输入：nums &#x3D; [3,3], target &#x3D; 6</p>
-<p>输出：[0,1]</p>
-</blockquote>
-<h4 id="思路-by-自己-1"><a href="#思路-by-自己-1" class="headerlink" title="思路 by 自己"></a>思路 by 自己</h4><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span>[] <span class="title">TwoSum</span>(<span class="params"><span class="built_in">int</span>[] nums, <span class="built_in">int</span> target</span>)</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="built_in">int</span>[] subscript =<span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>];</span><br><span class="line">       <span class="comment">//通过2个for循环判断 i j下标数字何时相加等于 target</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; nums.Length; i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="built_in">int</span> j = i+<span class="number">1</span>; j &lt; nums.Length; j++)</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="keyword">if</span> ((nums[i] + nums[j]) == target)</span><br><span class="line">               &#123;</span><br><span class="line">                   subscript[<span class="number">0</span>] = i;</span><br><span class="line">                   subscript[<span class="number">1</span>] = j;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> subscript;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>一开始还通过不了，因为写成了 int j &#x3D; 1;没写成每次第一个for循环结束时，j应该始终等于i的后面一个。不然j循环老是从小标1去开始比较，会出问题.</p>
-<h4 id="思路-by-他人"><a href="#思路-by-他人" class="headerlink" title="思路 by 他人"></a>思路 by 他人</h4><p>待续…</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>刷题</tag>
       </tags>
   </entry>
 </search>
