@@ -1,106 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>c#基础笔记(二)</title>
-    <url>/2023/09/24/c-base-notes02/</url>
-    <content><![CDATA[<h1 id="基础（二）"><a href="#基础（二）" class="headerlink" title="基础（二）"></a>基础（二）</h1><h2 id="里氏转换"><a href="#里氏转换" class="headerlink" title="里氏转换"></a>里氏转换</h2><p>里氏转换（Liskov Substitution Principle）是面向对象编程中的一个重要原则，它允许你将一个子类的实例赋值给父类的引用变量。这种转换是安全的，因为子类对象可以替代父类对象在大多数情况下的使用。</p>
-<ol>
-<li><p>如果父类里面装的是子类对象，那么可以将这个父类强转为子类对象。</p>
-</li>
-<li><p>子类对象可以调用父类中的成员，但是父类对象永远都只能调用自己的成员。</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Animal</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">MakeSound</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;The animal makes a sound.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Dog</span> : <span class="title">Animal</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">MakeSound</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;The dog barks.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Animal animal = <span class="keyword">new</span> Dog(); <span class="comment">// 里氏转换，将子类对象赋值给父类引用变量</span></span><br><span class="line">        animal.MakeSound(); <span class="comment">// 调用的是子类的方法，输出 &quot;The dog barks.&quot;</span></span><br><span class="line">        Dog d = (Dog) animal; <span class="comment">// 将这个父类强转为子类对象</span></span><br><span class="line">        d.MakeSound();<span class="comment">// 调用的是子类的方法，输出 &quot;The dog barks.&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>除了使用里氏转换（Liskov Substitution Principle）外，还可以使用is和as运算符来进行类型检查和类型转换。</p>
-</li>
-<li><p>is 运算符：用于检查一个对象是否是指定类型的实例。它返回一个布尔值，表示对象是否可以转换为指定类型。</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"> Animal animal = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="keyword">if</span> (animal <span class="keyword">is</span> Dog)</span><br><span class="line">&#123;</span><br><span class="line">    Dog dog = (Dog)animal; <span class="comment">// 进行显式类型转换</span></span><br><span class="line">    dog.Bark();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在上面的示例中，我们首先使用is运算符检查animal对象是否是Dog类型的实例。如果是，我们进行显式类型转换，将animal转换为Dog类型，并调用Bark方法。</p>
-</li>
-<li><p>as 运算符：用于尝试将一个对象转换为指定类型的实例。如果转换成功，返回转换后的对象；如果转换失败，返回null。</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Animal animal = <span class="keyword">new</span> Dog();</span><br><span class="line">Dog dog = animal <span class="keyword">as</span> Dog;</span><br><span class="line"><span class="keyword">if</span> (dog != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    dog.Bark();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>在上面的示例中，我们使用as运算符将animal对象转换为Dog类型的实例。如果转换成功，将返回转换后的Dog对象；如果转换失败，将返回null。然后，我们检查dog是否为null，如果不为null，则调用Bark方法。</p>
-</li>
-</ol>
-<p>使用is和as运算符可以在进行类型转换时提供更安全的方式，避免出现类型转换异常。is运算符用于检查类型，as运算符用于尝试转换类型。</p>
-<h2 id="ArrayList集合"><a href="#ArrayList集合" class="headerlink" title="ArrayList集合"></a>ArrayList集合</h2><p>在C#中，ArrayList是一种动态数组，可以存储不同类型的对象。它位于System.Collections命名空间中。</p>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ol>
-<li><p>public virtual int Add( object value );</p>
-<p> 在 ArrayList 的末尾添加一个对象。</p>
-</li>
-<li><p>public virtual void AddRange( ICollection c );</p>
-<p> 在 ArrayList 的末尾添加 ICollection 的元素。</p>
-</li>
-<li><p>public virtual void Clear();</p>
-<p> 从 ArrayList 中移除所有的元素。</p>
-</li>
-<li><p>public virtual bool Contains( object item );</p>
-<p> 判断某个元素是否在 ArrayList 中。</p>
-</li>
-<li><p>public virtual ArrayList GetRange( int index, int count );</p>
-<p> 返回一个 ArrayList，表示源 ArrayList 中元素的子集。</p>
-</li>
-<li><p>public virtual int IndexOf(object);</p>
-<p> 返回某个值在 ArrayList 中第一次出现的索引，索引从零开始。</p>
-</li>
-<li><p>public virtual void Insert( int index, object value );</p>
-<p> 在 ArrayList 的指定索引处，插入一个元素。</p>
-</li>
-<li><p>public virtual void InsertRange( int index, ICollection c );</p>
-<p> 在 ArrayList 的指定索引处，插入某个集合的元素。</p>
-</li>
-<li><p>public virtual void Remove( object obj );</p>
-<p> 从 ArrayList 中移除第一次出现的指定对象。</p>
-</li>
-<li><p>public virtual void RemoveAt( int index );</p>
-<p>移除 ArrayList 的指定索引处的元素。</p>
-</li>
-<li><p>public virtual void RemoveRange( int index, int count );</p>
-<p>从 ArrayList 中移除某个范围的元素。</p>
-</li>
-<li><p>public virtual void Reverse();</p>
-<p>逆转 ArrayList 中元素的顺序。</p>
-</li>
-<li><p>public virtual void SetRange( int index, ICollection c );</p>
-<p>复制某个集合的元素到 ArrayList 中某个范围的元素上。</p>
-</li>
-<li><p>public virtual void Sort();</p>
-<p>对 ArrayList 中的元素进行排序。</p>
-</li>
-<li><p>public virtual void TrimToSize();</p>
-<p>设置容量为 ArrayList 中元素的实际个数。</p>
-</li>
-</ol>
-<h3 id="长度问题"><a href="#长度问题" class="headerlink" title="长度问题"></a>长度问题</h3><p>Count和Capacity是两个不同的属性，它们之间有一些关系。<br>Count属性表示ArrayList中当前实际包含的元素数量。可以通过Count属性获取ArrayList中的元素数量，如下所示：</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.Add(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">list.Add(<span class="string">&quot;World&quot;</span>);</span><br><span class="line"><span class="built_in">int</span> count = list.Count; <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-
-<p>Capacity属性表示ArrayList内部数组的容量，即可以存储的元素数量上限。当ArrayList中的元素数量超过当前容量时，ArrayList会自动增加其容量(一般为一倍)以容纳更多的元素。可以通过Capacity属性获取ArrayList的当前容量，如下所示：</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line"><span class="built_in">int</span> capacity = list.Capacity;</span><br></pre></td></tr></table></figure>
-<p>当向ArrayList中添加元素时，如果元素数量超过了当前容量，ArrayList会自动增加其容量。容量的增长策略是根据当前容量的大小来确定的，通常是以一定的增量进行扩展。具体的增长策略可以参考ArrayList的实现。</p>
-<p>如果希望在添加大量元素之前预先设置ArrayList的容量，可以使用EnsureCapacity方法来指定所需的容量。这样可以避免在添加元素时频繁地调整容量，提高性能，如下所示：</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.EnsureCapacity(<span class="number">100</span>); <span class="comment">// 设置ArrayList的容量为100</span></span><br></pre></td></tr></table></figure>
-
-<p>总结来说，Count表示ArrayList中实际包含的元素数量，而Capacity表示ArrayList内部数组的容量。当元素数量超过容量时，ArrayList会自动增加容量以容纳更多的元素。可以使用EnsureCapacity方法来预先设置ArrayList的容量。</p>
-<h3 id="HashTable集合"><a href="#HashTable集合" class="headerlink" title="HashTable集合"></a>HashTable集合</h3><p>Hashtable是一种键值对集合，它可以用于存储和检索键值对数据。</p>
-<h4 id="常用方法-1"><a href="#常用方法-1" class="headerlink" title="常用方法"></a>常用方法</h4><ol>
-<li>创建Hashtable对象：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Hashtable hashtable = <span class="keyword">new</span> Hashtable();</span><br></pre></td></tr></table></figure></li>
-<li>向Hashtable中添加键值对：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">hashtable.Add(<span class="string">&quot;key1&quot;</span>, <span class="string">&quot;value1&quot;</span>);</span><br><span class="line">hashtable.Add(<span class="string">&quot;key2&quot;</span>, <span class="string">&quot;value2&quot;</span>);</span><br></pre></td></tr></table></figure></li>
-<li>通过键访问Hashtable中的值：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">object</span> <span class="keyword">value</span> = hashtable[<span class="string">&quot;key1&quot;</span>];</span><br></pre></td></tr></table></figure></li>
-<li>修改Hashtable中的值：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">hashtable[<span class="string">&quot;key2&quot;</span>] = <span class="string">&quot;new value&quot;</span>;</span><br></pre></td></tr></table></figure></li>
-<li>检查Hashtable中是否包含某个键：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">bool</span> containsKey = hashtable.ContainsKey(<span class="string">&quot;key1&quot;</span>);</span><br></pre></td></tr></table></figure></li>
-<li>检查Hashtable中是否包含某个值：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">bool</span> containsValue = hashtable.ContainsValue(<span class="string">&quot;value1&quot;</span>);</span><br></pre></td></tr></table></figure></li>
-<li>获取Hashtable中的键的集合：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ICollection keys = hashtable.Keys;</span><br></pre></td></tr></table></figure></li>
-<li>获取Hashtable中的值的集合：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ICollection values = hashtable.Values;</span><br></pre></td></tr></table></figure></li>
-<li>从Hashtable中移除键值对：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">hashtable.Remove(<span class="string">&quot;key1&quot;</span>);</span><br></pre></td></tr></table></figure>
-请注意，Hashtable中的键和值可以是任意类型的对象。如果需要使用特定类型的键和值，可以考虑使用泛型字典类（如Dictionary&lt;TKey, TValue&gt;）来替代Hashtable，因为泛型字典类提供了类型安全和更好的性能。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>编程,net</category>
-      </categories>
-      <tags>
-        <tag>c#</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>c#基础笔记(一)</title>
     <url>/2023/09/23/c-base-notes01/</url>
     <content><![CDATA[<p><a href="https://www.runoob.com/csharp/csharp-tutorial.html">c#-菜鸟教程</a></p>
@@ -389,7 +289,159 @@
 </ol>
 ]]></content>
       <categories>
-        <category>编程,net</category>
+        <category>编程</category>
+        <category>net</category>
+      </categories>
+      <tags>
+        <tag>c#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>c#基础笔记(二)</title>
+    <url>/2023/09/24/c-base-notes02/</url>
+    <content><![CDATA[<h1 id="基础（二）"><a href="#基础（二）" class="headerlink" title="基础（二）"></a>基础（二）</h1><h2 id="里氏转换"><a href="#里氏转换" class="headerlink" title="里氏转换"></a>里氏转换</h2><p>里氏转换（Liskov Substitution Principle）是面向对象编程中的一个重要原则，它允许你将一个子类的实例赋值给父类的引用变量。这种转换是安全的，因为子类对象可以替代父类对象在大多数情况下的使用。</p>
+<ol>
+<li><p>如果父类里面装的是子类对象，那么可以将这个父类强转为子类对象。</p>
+</li>
+<li><p>子类对象可以调用父类中的成员，但是父类对象永远都只能调用自己的成员。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Animal</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">MakeSound</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;The animal makes a sound.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Dog</span> : <span class="title">Animal</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">MakeSound</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;The dog barks.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Animal animal = <span class="keyword">new</span> Dog(); <span class="comment">// 里氏转换，将子类对象赋值给父类引用变量</span></span><br><span class="line">        animal.MakeSound(); <span class="comment">// 调用的是子类的方法，输出 &quot;The dog barks.&quot;</span></span><br><span class="line">        Dog d = (Dog) animal; <span class="comment">// 将这个父类强转为子类对象</span></span><br><span class="line">        d.MakeSound();<span class="comment">// 调用的是子类的方法，输出 &quot;The dog barks.&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>除了使用里氏转换（Liskov Substitution Principle）外，还可以使用is和as运算符来进行类型检查和类型转换。</p>
+</li>
+<li><p>is 运算符：用于检查一个对象是否是指定类型的实例。它返回一个布尔值，表示对象是否可以转换为指定类型。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"> Animal animal = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="keyword">if</span> (animal <span class="keyword">is</span> Dog)</span><br><span class="line">&#123;</span><br><span class="line">    Dog dog = (Dog)animal; <span class="comment">// 进行显式类型转换</span></span><br><span class="line">    dog.Bark();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的示例中，我们首先使用is运算符检查animal对象是否是Dog类型的实例。如果是，我们进行显式类型转换，将animal转换为Dog类型，并调用Bark方法。</p>
+</li>
+<li><p>as 运算符：用于尝试将一个对象转换为指定类型的实例。如果转换成功，返回转换后的对象；如果转换失败，返回null。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Animal animal = <span class="keyword">new</span> Dog();</span><br><span class="line">Dog dog = animal <span class="keyword">as</span> Dog;</span><br><span class="line"><span class="keyword">if</span> (dog != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    dog.Bark();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在上面的示例中，我们使用as运算符将animal对象转换为Dog类型的实例。如果转换成功，将返回转换后的Dog对象；如果转换失败，将返回null。然后，我们检查dog是否为null，如果不为null，则调用Bark方法。</p>
+</li>
+</ol>
+<p>使用is和as运算符可以在进行类型转换时提供更安全的方式，避免出现类型转换异常。is运算符用于检查类型，as运算符用于尝试转换类型。</p>
+<h2 id="ArrayList集合"><a href="#ArrayList集合" class="headerlink" title="ArrayList集合"></a>ArrayList集合</h2><p>在C#中，ArrayList是一种动态数组，可以存储不同类型的对象。它位于System.Collections命名空间中。</p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ol>
+<li><p>public virtual int Add( object value );</p>
+<p> 在 ArrayList 的末尾添加一个对象。</p>
+</li>
+<li><p>public virtual void AddRange( ICollection c );</p>
+<p> 在 ArrayList 的末尾添加 ICollection 的元素。</p>
+</li>
+<li><p>public virtual void Clear();</p>
+<p> 从 ArrayList 中移除所有的元素。</p>
+</li>
+<li><p>public virtual bool Contains( object item );</p>
+<p> 判断某个元素是否在 ArrayList 中。</p>
+</li>
+<li><p>public virtual ArrayList GetRange( int index, int count );</p>
+<p> 返回一个 ArrayList，表示源 ArrayList 中元素的子集。</p>
+</li>
+<li><p>public virtual int IndexOf(object);</p>
+<p> 返回某个值在 ArrayList 中第一次出现的索引，索引从零开始。</p>
+</li>
+<li><p>public virtual void Insert( int index, object value );</p>
+<p> 在 ArrayList 的指定索引处，插入一个元素。</p>
+</li>
+<li><p>public virtual void InsertRange( int index, ICollection c );</p>
+<p> 在 ArrayList 的指定索引处，插入某个集合的元素。</p>
+</li>
+<li><p>public virtual void Remove( object obj );</p>
+<p> 从 ArrayList 中移除第一次出现的指定对象。</p>
+</li>
+<li><p>public virtual void RemoveAt( int index );</p>
+<p>移除 ArrayList 的指定索引处的元素。</p>
+</li>
+<li><p>public virtual void RemoveRange( int index, int count );</p>
+<p>从 ArrayList 中移除某个范围的元素。</p>
+</li>
+<li><p>public virtual void Reverse();</p>
+<p>逆转 ArrayList 中元素的顺序。</p>
+</li>
+<li><p>public virtual void SetRange( int index, ICollection c );</p>
+<p>复制某个集合的元素到 ArrayList 中某个范围的元素上。</p>
+</li>
+<li><p>public virtual void Sort();</p>
+<p>对 ArrayList 中的元素进行排序。</p>
+</li>
+<li><p>public virtual void TrimToSize();</p>
+<p>设置容量为 ArrayList 中元素的实际个数。</p>
+</li>
+</ol>
+<h3 id="长度问题"><a href="#长度问题" class="headerlink" title="长度问题"></a>长度问题</h3><p>Count和Capacity是两个不同的属性，它们之间有一些关系。<br>Count属性表示ArrayList中当前实际包含的元素数量。可以通过Count属性获取ArrayList中的元素数量，如下所示：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.Add(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">list.Add(<span class="string">&quot;World&quot;</span>);</span><br><span class="line"><span class="built_in">int</span> count = list.Count; <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>Capacity属性表示ArrayList内部数组的容量，即可以存储的元素数量上限。当ArrayList中的元素数量超过当前容量时，ArrayList会自动增加其容量(一般为一倍)以容纳更多的元素。可以通过Capacity属性获取ArrayList的当前容量，如下所示：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line"><span class="built_in">int</span> capacity = list.Capacity;</span><br></pre></td></tr></table></figure>
+<p>当向ArrayList中添加元素时，如果元素数量超过了当前容量，ArrayList会自动增加其容量。容量的增长策略是根据当前容量的大小来确定的，通常是以一定的增量进行扩展。具体的增长策略可以参考ArrayList的实现。</p>
+<p>如果希望在添加大量元素之前预先设置ArrayList的容量，可以使用EnsureCapacity方法来指定所需的容量。这样可以避免在添加元素时频繁地调整容量，提高性能，如下所示：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.EnsureCapacity(<span class="number">100</span>); <span class="comment">// 设置ArrayList的容量为100</span></span><br></pre></td></tr></table></figure>
+
+<p>总结来说，Count表示ArrayList中实际包含的元素数量，而Capacity表示ArrayList内部数组的容量。当元素数量超过容量时，ArrayList会自动增加容量以容纳更多的元素。可以使用EnsureCapacity方法来预先设置ArrayList的容量。</p>
+<h3 id="HashTable集合"><a href="#HashTable集合" class="headerlink" title="HashTable集合"></a>HashTable集合</h3><p>Hashtable是一种键值对集合，它可以用于存储和检索键值对数据。</p>
+<h4 id="常用方法-1"><a href="#常用方法-1" class="headerlink" title="常用方法"></a>常用方法</h4><ol>
+<li>创建Hashtable对象：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Hashtable hashtable = <span class="keyword">new</span> Hashtable();</span><br></pre></td></tr></table></figure></li>
+<li>向Hashtable中添加键值对：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">hashtable.Add(<span class="string">&quot;key1&quot;</span>, <span class="string">&quot;value1&quot;</span>);</span><br><span class="line">hashtable.Add(<span class="string">&quot;key2&quot;</span>, <span class="string">&quot;value2&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>通过键访问Hashtable中的值：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">object</span> <span class="keyword">value</span> = hashtable[<span class="string">&quot;key1&quot;</span>];</span><br></pre></td></tr></table></figure></li>
+<li>修改Hashtable中的值：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">hashtable[<span class="string">&quot;key2&quot;</span>] = <span class="string">&quot;new value&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+<li>检查Hashtable中是否包含某个键：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">bool</span> containsKey = hashtable.ContainsKey(<span class="string">&quot;key1&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>检查Hashtable中是否包含某个值：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">bool</span> containsValue = hashtable.ContainsValue(<span class="string">&quot;value1&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>获取Hashtable中的键的集合：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ICollection keys = hashtable.Keys;</span><br></pre></td></tr></table></figure></li>
+<li>获取Hashtable中的值的集合：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ICollection values = hashtable.Values;</span><br></pre></td></tr></table></figure></li>
+<li>从Hashtable中移除键值对：<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">hashtable.Remove(<span class="string">&quot;key1&quot;</span>);</span><br></pre></td></tr></table></figure>
+请注意，Hashtable中的键和值可以是任意类型的对象。如果需要使用特定类型的键和值，可以考虑使用泛型字典类（如Dictionary&lt;TKey, TValue&gt;）来替代Hashtable，因为泛型字典类提供了类型安全和更好的性能。</li>
+</ol>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="Path类"><a href="#Path类" class="headerlink" title="Path类"></a>Path类</h3><p>在C#中，Path类提供了一组用于操作和处理文件路径的静态方法。Path类位于System.IO命名空间中。</p>
+<p>下面是一些常用的Path类方法：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//获取文件名</span></span><br><span class="line">Console.WriteLine( Path.GetFileName(path));</span><br><span class="line"><span class="comment">//获取文件名但不包括扩展名</span></span><br><span class="line">Console.WriteLine(Path.GetFileNameWithoutExtension(path));</span><br><span class="line"><span class="comment">//获取全路径(绝对路径)</span></span><br><span class="line">Console.WriteLine(Path.GetFullPath(path));</span><br><span class="line"><span class="comment">//获取文件夹名字</span></span><br><span class="line">Console.WriteLine(Path.GetDirectoryName(path));</span><br><span class="line"><span class="comment">//将多个字符串组合成一个路径。它会自动处理路径分隔符，并确保生成的路径是有效的。</span></span><br><span class="line">Console.WriteLine (Path.Combine(<span class="string">&quot;liu&quot;</span>, <span class="string">&quot;yang&quot;</span>, <span class="string">&quot;sha.txt&quot;</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><p>File类提供了一组常用的方法来操作文件。</p>
+<h4 id="常用方法-2"><a href="#常用方法-2" class="headerlink" title="常用方法"></a>常用方法</h4><ol>
+<li>Exists：检查文件是否存在。<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">bool</span> exists = File.Exists(<span class="string">&quot;path/to/file.txt&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>ReadAllText：读取文件的所有文本内容。<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> content = File.ReadAllText(<span class="string">&quot;path/to/file.txt&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>WriteAllText：将文本内容写入文件。<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">File.WriteAllText(<span class="string">&quot;path/to/file.txt&quot;</span>, <span class="string">&quot;Hello, World!&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>ReadAllLines：读取文件的所有行内容，并返回一个字符串数组。<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span>[] lines = File.ReadAllLines(<span class="string">&quot;path/to/file.txt&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>WriteAllLines：将字符串数组的内容写入文件，每个元素占据一行。<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span>[] lines = &#123; <span class="string">&quot;Line 1&quot;</span>, <span class="string">&quot;Line 2&quot;</span>, <span class="string">&quot;Line 3&quot;</span> &#125;;</span><br><span class="line">File.WriteAllLines(<span class="string">&quot;path/to/file.txt&quot;</span>, lines);</span><br></pre></td></tr></table></figure></li>
+<li>Copy：复制文件到指定的目标路径。<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">File.Copy(<span class="string">&quot;source/path/file.txt&quot;</span>, <span class="string">&quot;destination/path/file.txt&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Move：移动文件到指定的目标路径。<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">File.Move(<span class="string">&quot;source/path/file.txt&quot;</span>, <span class="string">&quot;destination/path/file.txt&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Delete：删除指定的文件。<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">File.Delete(<span class="string">&quot;path/to/file.txt&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>编码和乱码是在处理文本数据时经常遇到的概念。</p>
+<p>编码是将字符转换为二进制数据的过程，以便计算机能够处理和存储。常见的字符编码包括ASCII、UTF-8、UTF-16等。每个字符编码都有一套规则，用于将字符映射到特定的二进制表示形式。</p>
+<p>乱码是指在使用错误的字符编码或在不同编码之间转换时，导致文本无法正确解析或显示的现象。当使用错误的编码解析文本时，会导致字符被错误地解释或显示为乱码字符。</p>
+<p>例如，如果一个文本文件使用UTF-8编码保存，但是在读取时使用了错误的编码（如使用ASCII编码读取），那么文本中的非ASCII字符可能会被错误地解析为乱码字符。</p>
+<p>为了避免乱码问题，需要确保在读取、写入和处理文本数据时使用正确的字符编码。在读取文本文件时，应该使用与文件编码相匹配的编码进行解析。在进行字符编码转换时，应该使用正确的源编码和目标编码。</p>
+<p>在C#中，可以使用System.Text.Encoding类来处理字符编码和解码操作，以确保正确地处理文本数据，避免乱码问题的发生。</p>
+<h3 id="绝对路径-相对路径"><a href="#绝对路径-相对路径" class="headerlink" title="绝对路径 相对路径"></a>绝对路径 相对路径</h3><p>在 macOS 系统中，绝对路径和相对路径的表示方式与其他 Unix&#x2F;Linux 系统类似。<br>绝对路径是从根目录开始的完整路径，用于准确定位文件或目录的位置。在 macOS 中，根目录表示为&#x2F;。以下是一个示例绝对路径：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;/Users/Username/Documents/file.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>相对路径是相对于当前工作目录或参考路径的路径表示。当前工作目录是指在终端或应用程序中执行命令或运行程序时所处的目录。以下是一些常见的相对路径示例：</p>
+<ul>
+<li>如果当前工作目录是&#x2F;Users&#x2F;Username&#x2F;Documents，则相对路径file.txt表示的是&#x2F;Users&#x2F;Username&#x2F;Documents&#x2F;file.txt。</li>
+<li>如果当前工作目录是&#x2F;Users&#x2F;Username，则相对路径Documents&#x2F;file.txt表示的是&#x2F;Users&#x2F;Username&#x2F;Documents&#x2F;file.txt。</li>
+</ul>
+<p>请注意，相对路径是相对于当前工作目录的，因此在不同的工作目录下，相对路径可能会指向不同的文件或目录。</p>
+<h3 id="List-泛型"><a href="#List-泛型" class="headerlink" title="List 泛型"></a>List 泛型</h3><p>List<T>是一个常用的泛型集合类，用于存储和操作多个元素。它提供了动态大小的可变数组，可以按索引访问和修改元素。</p>
+<p>以下是一些常见的List<T>的用法示例：</p>
+<ol>
+<li><p>创建一个空的List<T>：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">List&lt;<span class="built_in">int</span>&gt; numbers = <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;();</span><br></pre></td></tr></table></figure></li>
+<li><p>添加元素到List<T>：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">numbers.Add(<span class="number">1</span>);</span><br><span class="line">numbers.Add(<span class="number">2</span>);</span><br><span class="line">numbers.Add(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取List<T>的长度（元素个数）：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> count = numbers.Count;</span><br></pre></td></tr></table></figure></li>
+<li><p>访问和修改List<T>中的元素：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> firstNumber = numbers[<span class="number">0</span>];</span><br><span class="line">numbers[<span class="number">1</span>] = <span class="number">10</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>检查List<T>中是否包含某个元素：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">bool</span> contains = numbers.Contains(<span class="number">2</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>移除List<T>中的元素：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">numbers.Remove(<span class="number">3</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>清空List<T>中的所有元素：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">numbers.Clear();</span><br></pre></td></tr></table></figure></li>
+<li><p>遍历List<T>中的元素：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (<span class="built_in">int</span> number <span class="keyword">in</span> numbers)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>net</category>
       </categories>
       <tags>
         <tag>c#</tag>
@@ -398,7 +450,7 @@
   <entry>
     <title>力扣-每日一题</title>
     <url>/2023/09/24/%E5%8A%9B%E6%89%A3-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
-    <content><![CDATA[<h1 id="9月"><a href="#9月" class="headerlink" title="9月"></a>9月</h1><h2 id="2023-09-23"><a href="#2023-09-23" class="headerlink" title="2023&#x2F;09&#x2F;23"></a>2023&#x2F;09&#x2F;23</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="number">389.</span> 找不同</span><br><span class="line">给定两个字符串 s 和 t ，它们只包含小写字母。</span><br><span class="line"></span><br><span class="line">字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。</span><br><span class="line"></span><br><span class="line">请找出在 t 中被添加的字母。</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h1 id="9月"><a href="#9月" class="headerlink" title="9月"></a>9月</h1><h2 id="389-找不同-–09-23"><a href="#389-找不同-–09-23" class="headerlink" title="389. 找不同 –09&#x2F;23"></a>389. 找不同 –09&#x2F;23</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">给定两个字符串 s 和 t ，它们只包含小写字母。</span><br><span class="line"></span><br><span class="line">字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。</span><br><span class="line"></span><br><span class="line">请找出在 t 中被添加的字母。</span><br></pre></td></tr></table></figure>
 <p>示例 1：</p>
 <blockquote>
 <p>输入：s &#x3D; “abcd”, t &#x3D; “abcde”<br>解释：’e’ 是那个被添加的字母。<br>输出：”e”</p>
@@ -407,17 +459,46 @@
 <blockquote>
 <p>输入：s &#x3D; “”, t &#x3D; “y”<br>输出：”y”</p>
 </blockquote>
-<h4 id="思路-by-自己"><a href="#思路-by-自己" class="headerlink" title="思路 by 自己"></a>思路 by 自己</h4><p>将要比较的t字符串先转换字符数组，然后通过 foreach循环去判断s字符串包不包含t转换的字符数组中的字符。</p>
+<h3 id="思路-by-自己"><a href="#思路-by-自己" class="headerlink" title="思路 by 自己"></a>思路 by 自己</h3><p>将要比较的t字符串先转换字符数组，然后通过 foreach循环去判断s字符串包不包含t转换的字符数组中的字符。</p>
 <p>示例1,2通过。可当 s&#x3D;”a”,t&#x3D;”aa”的时候，通过不了。返回为null。因为没考虑到这种情况！</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">char</span> <span class="title">FindTheDifference</span>(<span class="params"><span class="built_in">string</span> s, <span class="built_in">string</span> t</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="function"><span class="built_in">char</span> temp <span class="title">in</span> (<span class="params">t.ToCharArray(</span>)))</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!(s.Contains(temp)))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>接下来我的另外一种思路：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">char</span>[] cs = t.ToCharArray();</span><br><span class="line">    <span class="built_in">char</span>[] ts = <span class="keyword">new</span> <span class="built_in">char</span>[cs.Length];</span><br><span class="line">    <span class="comment">// 判断 s字符串是否包含t里面的字符，包含就放到ts字符数组，不包含就返回</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i =<span class="number">0</span>;i&lt; cs.Length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> ((s.Contains(cs[i])))</span><br><span class="line">        &#123;</span><br><span class="line">            ts[i] = cs[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> cs[i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Console.Write(ts.Length);</span><br><span class="line">    <span class="built_in">string</span> str = <span class="keyword">new</span> <span class="built_in">string</span>(ts);</span><br><span class="line">    Console.WriteLine(str);</span><br><span class="line"><span class="comment">// 判断生成的ts字符数组里面是否有重复的字符</span></span><br><span class="line"><span class="comment">//后面才想到其实这样也不对，要是s里面是2个a呢</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; ts.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (str.IndexOf(ts[i]) != str.LastIndexOf(ts[i]))&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> ts[i];</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&#x27; &#x27;</span>;</span><br></pre></td></tr></table></figure>
 
-<p>待续…</p>
+<h3 id="思路-by-他人-待续…"><a href="#思路-by-他人-待续…" class="headerlink" title="思路 by 他人 (待续…)"></a>思路 by 他人 (待续…)</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><ol>
+<li>全转换成字符数组，分别求和</li>
+<li>再把和相减，得到的值就是多出来的那个</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">char</span> <span class="title">FindTheDifference</span>(<span class="params"><span class="built_in">string</span> s, <span class="built_in">string</span> t</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">char</span>[] tt= t.ToCharArray();</span><br><span class="line">    <span class="built_in">int</span> tt_sum=<span class="number">0</span>, ss_sum=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">char</span>[] ss=s.ToCharArray();</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; tt.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        tt_sum += tt[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; ss.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ss_sum += ss[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">int</span> n= tt_sum - ss_sum;</span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">char</span>)n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><h2 id="1-两数之和-–09-24"><a href="#1-两数之和-–09-24" class="headerlink" title="1. 两数之和 –09&#x2F;24"></a>1. 两数之和 –09&#x2F;24</h2><p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>
+<p>你可以按任意顺序返回答案。</p>
+<p>示例 1：</p>
+<blockquote>
+<p>输入：nums &#x3D; [2,7,11,15], target &#x3D; 9</p>
+<p>输出：[0,1]</p>
+<p>解释：因为 nums[0] + nums[1] &#x3D;&#x3D; 9 ，返回 [0, 1] 。</p>
+</blockquote>
+<p>示例 2：</p>
+<blockquote>
+<p>输入：nums &#x3D; [3,2,4], target &#x3D; 6</p>
+<p>输出：[1,2]</p>
+</blockquote>
+<p>示例 3：</p>
+<blockquote>
+<p>输入：nums &#x3D; [3,3], target &#x3D; 6</p>
+<p>输出：[0,1]</p>
+</blockquote>
+<h4 id="思路-by-自己-1"><a href="#思路-by-自己-1" class="headerlink" title="思路 by 自己"></a>思路 by 自己</h4><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span>[] <span class="title">TwoSum</span>(<span class="params"><span class="built_in">int</span>[] nums, <span class="built_in">int</span> target</span>)</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="built_in">int</span>[] subscript =<span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>];</span><br><span class="line">       <span class="comment">//通过2个for循环判断 i j下标数字何时相加等于 target</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; nums.Length; i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="built_in">int</span> j = i+<span class="number">1</span>; j &lt; nums.Length; j++)</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="keyword">if</span> ((nums[i] + nums[j]) == target)</span><br><span class="line">               &#123;</span><br><span class="line">                   subscript[<span class="number">0</span>] = i;</span><br><span class="line">                   subscript[<span class="number">1</span>] = j;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> subscript;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>一开始还通过不了，因为写成了 int j &#x3D; 1;没写成每次第一个for循环结束时，j应该始终等于i的后面一个。不然j循环老是从小标1去开始比较，会出问题.</p>
+<h4 id="思路-by-他人"><a href="#思路-by-他人" class="headerlink" title="思路 by 他人"></a>思路 by 他人</h4><p>待续…</p>
 ]]></content>
       <categories>
-        <category>编程</category>
+        <category>算法</category>
       </categories>
       <tags>
-        <tag>算法,刷题</tag>
+        <tag>算法</tag>
+        <tag>刷题</tag>
       </tags>
   </entry>
 </search>
