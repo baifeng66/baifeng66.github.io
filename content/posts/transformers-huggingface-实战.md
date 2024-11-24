@@ -1,11 +1,10 @@
 +++
 date = '2024-11-23T22:11:54+08:00'
 draft = true
-title = 'Transformers-Huggingface实战'
+title = 'Transformers-Huggingface-实战'
 categories = ["Python"]
 tags = ["自然语言处理", "NLP"]
 +++
-
 # 基础组件
 
 ## Pipeline-管道
