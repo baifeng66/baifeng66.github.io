@@ -12,8 +12,16 @@
     <generator>Hugo -- 0.139.0</generator>
     <language>zh</language>
     <copyright>©2024 SonnyCalcr&amp;rsquo;s Blog</copyright>
-    <lastBuildDate>Sat, 23 Nov 2024 22:11:54 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 Nov 2024 19:51:39 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vue2&#43;3</title>
+      <link>http://localhost:1313/posts/vue2&#43;3/</link>
+      <pubDate>Sun, 24 Nov 2024 19:51:39 +0800</pubDate>
+      <guid>http://localhost:1313/posts/vue2&#43;3/</guid>
+      <description>&lt;h1 id=&#34;vue2&#34;&gt;Vue2&lt;/h1&gt;
+&lt;p&gt;Vue (读音 /vjuː/，类似于 &lt;strong&gt;view&lt;/strong&gt;) 是一套用于构建用户界面的&lt;strong&gt;渐进式框架&lt;/strong&gt;。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与&lt;a href=&#34;https://v2.cn.vuejs.org/v2/guide/single-file-components.html&#34;&gt;现代化的工具链&lt;/a&gt;以及各种&lt;a href=&#34;https://github.com/vuejs/awesome-vue#libraries--plugins&#34;&gt;支持类库&lt;/a&gt;结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Transformers-Huggingface-实战</title>
       <link>http://localhost:1313/posts/transformers-huggingface-%E5%AE%9E%E6%88%98/</link>
