@@ -3,8 +3,11 @@ date = '2024-11-21T08:57:06+08:00'
 title = 'My First Post'
 categories = ["通用技术"]
 tags = ["博客搭建", "Bilibili"]
+draft = true
 +++
+
 # 开头
+
 这是第一篇文章
 行内数学公式：$a^2 + b^2 = c^2$。
 
@@ -21,15 +24,18 @@ $$
 </div>
 
 ## 代码块
+
 ```css
 .post-content pre,
 code {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 1rem;
-    line-height: 1.2;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1rem;
+  line-height: 1.2;
 }
 ```
-### yaml快
+
+### yaml 快
+
 ```yaml
 # ~~~~~~~~~
 # hugo 本身的配置
@@ -141,23 +147,23 @@ params:
 
   # 搜索
   fuseOpts:
-      isCaseSensitive: false # 是否大小写敏感
-      shouldSort: true # 是否排序
-      location: 0
-      distance: 1000
-      threshold: 0.4
-      minMatchCharLength: 0
-      # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
-      keys: ["title", "permalink", "summary", "content"]
-      includeMatches: true
+    isCaseSensitive: false # 是否大小写敏感
+    shouldSort: true # 是否排序
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "permalink", "summary", "content"]
+    includeMatches: true
   # 设置网站的标签页的图标，即 favicon
   assets:
-      favicon: "favicon.png"
-      favicon16x16: "favicon.png"
-      favicon32x32: "favicon.png"
-      apple_touch_icon: "favicon.png"
-      safari_pinned_tab: "favicon.png"
-      disableHLJS: true
+    favicon: "favicon.png"
+    favicon16x16: "favicon.png"
+    favicon32x32: "favicon.png"
+    apple_touch_icon: "favicon.png"
+    safari_pinned_tab: "favicon.png"
+    disableHLJS: true
 
   # 评论的设置
   giscus:
@@ -196,4 +202,5 @@ markup:
     # style: "github-dark"
     # style: monokai
 ```
+
 ![](https://i.postimg.cc/Sm4hZz7t/image.png)
